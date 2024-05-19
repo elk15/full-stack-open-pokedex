@@ -51,7 +51,7 @@ jobs:
           env: 
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             DEFAULT_BUMP: 'patch'
-            
+
     notification: 
       needs: [simple_deployment_pipeline]
       runs-on: ubuntu-20.04
@@ -61,14 +61,14 @@ jobs:
           if: success()
           with:
               severity: info
-              details: Test Succeeded!
+              details: Build Succeeded!
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
         - name: Test Failure
           uses: rjstone/discord-webhook-notify@v1
           if: failure()
           with:
               severity: error
-              details: Test Failed!
+              details: Build Failed!
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
